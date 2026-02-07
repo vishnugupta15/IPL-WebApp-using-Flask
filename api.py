@@ -134,8 +134,7 @@ def batsmanAPI(batsman, balls=batter_data):
     against = {team: batsmanVsTeam(batsman, team, df) for team in TEAMS}
     
     data = {
-        batsman: {'all': self_record,
-                  'against': against}
+        batsman: {'all': self_record}
     }
     return to_python(data)
 
@@ -241,7 +240,6 @@ def bowlerAPI(bowler, balls=bowler_data):
     TEAMS = matches.Team1.unique()
     against = {team: bowlerVsTeam(bowler, team, df) for team in TEAMS}
     data = {
-        bowler: {'all': self_record,
-                 'against': against}
+        bowler: {'all': self_record}
     }
     return to_python(data)
