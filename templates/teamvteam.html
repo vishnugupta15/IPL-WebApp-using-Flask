@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team vs Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">IPL Dashboard</div>
+        <div class="nav-right">
+            <a href="/dashboard" class="nav-link">Home</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <div class="feature-page">
+        <h1>Team vs Team</h1>
+        <p class="subtitle">
+            Compare head-to-head performance between two IPL teams
+        </p>
+
+        <!-- Team selection -->
+        <div class="vs-form">
+            <select id="team1"></select>
+            <select id="team2"></select>
+            <button onclick="loadTeamVsTeam()">Compare</button>
+        </div>
+
+        <!-- Result -->
+        <div class="vs-cards" id="result"></div>
+
+        <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+    </div>
+
+<script>
+    const team1Select = document.getElementById("team1");
+    const team2Select = document.getElementById("team2");
+    const resultDiv = document.getElementById("result");
+
+    // Load teams for dropdown
+    fetch("/api/teams")
+        .then(res => res.json())
+        .then(data => {
+            data.teams.forEach(team => {
+                team1Select.innerHTML += `<option value="${team}">${team}</option>`;
+                team2Select.innerHTML += `<option value="${team}">${team}</option>`;
+            });
+        });
+
+    function loadTeamVsTeam() {
+        const team1 = team1Select.value;
+        const team2 = team2Select.value;
+
+        if (team1 === team2) {
+            alert("Please select two different teams");
+            return;
+        }
+
+        fetch(`/api/teamvteam?team1=${team1}&team2=${team2}`)
+            .then(res => res.json())
+            .then(data => {
+                resultDiv.innerHTML = `
+                    <div class="vs-card">
+                        <h3>Total Matches</h3>
+                        <div class="vs-value">${data.total_matches}</div>
+                    </div>
+
+                    <div class="vs-card">
+                        <h3>${team1} Wins</h3>
+                        <div class="vs-value">${data[team1]}</div>
+                    </div>
+
+                    <div class="vs-card">
+                        <h3>${team2} Wins</h3>
+                        <div class="vs-value">${data[team2]}</div>
+                    </div>
+
+                    <div class="vs-card">
+                        <h3>Draws / No Result</h3>
+                        <div class="vs-value">${data.draws}</div>
+                    </div>
+                `;
+            });
+    }
+</script>
+
+</body>
+</html>

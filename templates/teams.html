@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPL Teams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">IPL Dashboard</div>
+        <div class="nav-right">
+            <a href="/dashboard" class="nav-link">Home</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <!-- Teams Page -->
+    <div class="feature-page">
+        <h1>IPL Teams</h1>
+        <p class="subtitle">
+            All franchises that have participated in the Indian Premier League
+        </p>
+
+        <span class="team-count" id="teamCount">Loading...</span>
+
+        <div class="teams-grid" id="teamsGrid">
+            <!-- Cards inserted by JS -->
+        </div>
+
+        <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+    </div>
+
+    <!-- JS -->
+    <script>
+        fetch("/api/teams")
+            .then(response => response.json())
+            .then(data => {
+                const teamsGrid = document.getElementById("teamsGrid");
+                const teamCount = document.getElementById("teamCount");
+
+                teamCount.textContent = `Total Teams: ${data.teams.length}`;
+
+                data.teams.forEach(team => {
+                    const card = document.createElement("div");
+                    card.className = "team-card";
+
+                    card.innerHTML = `
+                        <div class="team-name">${team}</div>
+                        <div class="team-tag">IPL Franchise</div>
+                    `;
+
+                    teamsGrid.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching teams:", error);
+            });
+    </script>
+
+</body>
+</html>

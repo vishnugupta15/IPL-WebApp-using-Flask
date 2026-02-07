@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bowler Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">IPL Dashboard</div>
+        <div class="nav-right">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="logout-btn" href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Feature Page Content -->
+    <div class="feature-page">
+        <h1>Explore Bowler Stats</h1>
+        <p class="subtitle">View detailed performance records of any IPL bowler</p>
+
+        <!-- Bowler selection -->
+        <select id="bowlerSelect">
+            <option value="">Select a Bowler</option>
+        </select>
+        <button id="showBowlerBtn">Show Stats</button>
+
+        <!-- Result area -->
+        <div id="bowlerStatsResult" style="margin-top:30px; text-align:left;"></div>
+
+        <a class="back-link" href="/dashboard">← Back to Dashboard</a>
+    </div>
+
+    <script>
+        const bowlerSelect = document.getElementById("bowlerSelect");
+
+        // Fetch all bowlers and populate dropdown
+        fetch("/api/batsmen")
+            .then(res => res.json())
+            .then(data => {
+                console.log("Bowlers data:", data);
+                data.batsmen.forEach(bowler => {
+                    bowlerSelect.innerHTML += `<option value="${bowler}">${bowler}</option>`;
+                });
+            })
+            .catch(err => {
+                console.error("Failed to load bowlers:", err);
+            });
+
+        // Show bowler stats on button click
+        document.getElementById("showBowlerBtn").addEventListener("click", () => {
+            const bowler = bowlerSelect.value;
+
+            if (!bowler) {
+                alert("Please select a bowler");
+                return;
+            }
+
+            const resultDiv = document.getElementById("bowlerStatsResult");
+            resultDiv.innerHTML = "Loading...";
+
+            fetch(`/api/bowler-stats?bowler=${encodeURIComponent(bowler)}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log("Bowler stats:", data[bowler]);
+
+                    const stats = data[bowler].all;
+
+                    let html = `<h3>${bowler} Stats</h3>`;
+                    html += `<p><strong>Innings Bowled:</strong> ${stats.innings}</p>`;
+                    html += `<p><strong>Wickets:</strong> ${stats.wicket}</p>`;
+                    html += `<p><strong>3+ Wicket Hauls:</strong> ${stats["3+W"]}</p>`;
+                    html += `<p><strong>Best Bowling Figure:</strong> ${stats.best_figure}</p>`;
+                    html += `<p><strong>Bowling Average:</strong> ${stats.avg.toFixed(2)}</p>`;
+                    html += `<p><strong>Economy Rate:</strong> ${stats.economy.toFixed(2)}</p>`;
+                    html += `<p><strong>Strike Rate:</strong> ${stats.strikeRate.toFixed(2)}</p>`;
+                    html += `<p><strong>Fours Conceded:</strong> ${stats.fours}</p>`;
+                    html += `<p><strong>Sixes Conceded: </strong> ${stats.sixes}</p>`;
+                    html += `<p><strong>Player of the Match:</strong> ${stats.mom}</p>`;
+
+                    resultDiv.innerHTML = html;
+                })
+                .catch(err => {
+                    console.error(err);
+                    resultDiv.innerHTML = "Failed to load bowler stats.";
+                });
+        });
+    </script>
+
+</body>
+</html>

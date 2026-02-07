@@ -1,0 +1,457 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #0d6efd;
+    height: 64px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+/* Left side */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Right side */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Logout button */
+.logout-btn {
+    background-color: #dc3545;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: #b02a37;
+}
+
+
+/* Dashboard */
+.dashboard {
+    max-width: 1100px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.dashboard h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 50px;
+}
+
+/* Cards */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.dashboard-card i {
+    font-size: 45px;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+.dashboard-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.dashboard-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.dashboard-card a {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.dashboard-card a:hover {
+    background-color: #084298;
+}
+
+/* Feature Pages (show teams,..) */
+.feature-page {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.feature-page h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.feature-page .subtitle {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 35px;
+}
+/* Teams Page Grid */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* Team Card */
+.team-card {
+    background: linear-gradient(145deg, #ffffff, #f1f5ff);
+    border-radius: 18px;
+    padding: 30px 20px;
+    box-shadow: 0 12px 28px rgba(13,110,253,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -40%;
+    width: 120px;
+    height: 120px;
+    background: rgba(13,110,253,0.1);
+    border-radius: 50%;
+}
+
+.team-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(13,110,253,0.25);
+}
+
+.team-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d6efd;
+    margin-bottom: 8px;
+}
+
+.team-tag {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Teams count badge */
+.team-count {
+    display: inline-block;
+    background-color: #0d6efd;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+
+/* Team vs Team */
+.vs-form {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.vs-form select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    min-width: 220px;
+}
+
+.vs-form button {
+    padding: 10px 26px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.vs-form button:hover {
+    background-color: #084298;
+}
+
+.vs-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.vs-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.vs-card h3 {
+    font-size: 18px;
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.vs-value {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Team Stats Result Card */
+#teamStatsResult {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+}
+
+#teamStatsResult h3 {
+    font-size: 24px;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+#teamStatsResult p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+#teamStatsResult table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#teamStatsResult table th, 
+#teamStatsResult table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#teamStatsResult table th {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: bold;
+}
+
+#teamStatsResult table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#teamStatsResult table tr:hover {
+    background-color: #e3f2fd;
+}
+
+/* Style the select and button to match the dashboard */
+select#teamSelect {
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#showStatsBtn {
+    padding: 8px 18px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s ease;
+}
+
+#showStatsBtn:hover {
+    background-color: #084298;
+}
+
+/* Batsman Stats Result Card */
+#batsmanStatsResult {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+}
+
+#batsmanStatsResult h3 {
+    font-size: 24px;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+#batsmanStatsResult p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Style the batsman select dropdown */
+select#batsmanSelect {
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+/* Style the show stats button */
+#showBatsmanBtn {
+    padding: 8px 18px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s ease;
+}
+
+#showBatsmanBtn:hover {
+    background-color: #084298;
+}
+
+/* Bowler Stats Result Card */
+#bowlerStatsResult {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+}
+
+#bowlerStatsResult h3 {
+    font-size: 24px;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+#bowlerStatsResult p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Select + button */
+select#bowlerSelect {
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#showBowlerBtn {
+    padding: 8px 18px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s ease;
+}
+
+#showBowlerBtn:hover {
+    background-color: #084298;
+}
+
+
+/* Back link */
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

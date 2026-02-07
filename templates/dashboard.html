@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPL Insight App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="logo">IPL Insights App</span>
+        </div>
+
+        <div class="nav-right">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+
+    <section class="dashboard">
+        <h1>Welcome to IPL Insights App</h1>
+        <p class="subtitle">Choose a functionality to continue</p>
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+                <i class="fas fa-tags"></i>
+                <h3>See all IPL Teams</h3>
+                <p>Want to see all the teams participated in the IPL</p>
+                <a href="/teams">Show Teams</a>
+            </div>
+
+            <div class="dashboard-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Explore Team Stats</h3>
+                <p>View detailed performance and records of any IPL team</p>
+                <a href="/team-stats">Team Stats</a>
+            </div>
+
+            <div class="dashboard-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#0d6efd" viewBox="0 0 24 24" style="margin-bottom:20px;">
+  <path d="M2 21l3-3 10-10 3 3-10 10-3 3-3-3zM16 7l1-1 3 3-1 1-3-3z"/>
+</svg>
+
+                <i class="fas fa-cricket-ball"></i> <!-- example, you may use a suitable icon -->
+                <h3>Batsman Performance</h3>
+                <p>Check career and matchup stats of IPL batsmen</p>
+                <a href="/batsman-stats">Batsman Stats</a>
+            </div>
+
+            <div class="dashboard-card">
+                <i class="fas fa-bowling-ball"></i> <!-- example, replace with actual icon -->
+                <h3>Bowler Performance</h3>
+                <p>Explore IPL bowler performance and records</p>
+                <a href="/bowler-stats">Bowler Stats</a>
+            </div>
+
+            <div class="dashboard-card">
+                <i class="fas fa-user-friends"></i>
+                <h3>Compare Team vs Team</h3>
+                <p>View head-to-head stats between two IPL teams</p>
+                <a href="/team-vs-team">Team vs Team</a>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">IPL Dashboard</div>
+        <div class="nav-right">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="logout-btn" href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Feature Page Content -->
+    <div class="feature-page">
+        <h1>Explore Team Stats</h1>
+        <p class="subtitle">View detailed performance and records of any IPL team</p>
+
+        <!-- Team selection -->
+        <select id="teamSelect">
+            <option value="">Select a Team</option>
+            {% for team in teams %}
+            <option value="{{ team }}">{{ team }}</option>
+            {% endfor %}
+        </select>
+        <button id="showStatsBtn">Show Stats</button>
+
+        <!-- Result area -->
+        <div id="teamStatsResult" style="margin-top:30px; text-align:left;"></div>
+
+        <a class="back-link" href="/dashboard">← Back to Dashboard</a>
+    </div>
+
+    <script>
+        const teamSelect = document.getElementById("teamSelect");
+
+        // Fetch all teams from /api/teams and populate dropdown
+        fetch("/api/teams")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                data.teams.forEach(team => {
+                    teamSelect.innerHTML += `<option value="${team}">${team}</option>`;
+                });
+            })
+            .catch(err => {
+                console.error("Failed to load teams:", err);
+            });
+
+        // Show stats on button click
+        document.getElementById("showStatsBtn").addEventListener("click", () => {
+            const team = teamSelect.value;
+            if (!team) {
+                alert("Please select a team");
+                return;
+            }
+
+            const resultDiv = document.getElementById("teamStatsResult");
+            resultDiv.innerHTML = "Loading...";
+
+            fetch(`/api/team-stats?team=${encodeURIComponent(team)}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    let html = `<h3>${team} Stats</h3>`;
+                    html += `<p><strong>Total Matches Played:</strong> ${data.matchesplayed}</p>`;
+                    html += `<p><strong>Matches Won:</strong> ${data.won}</p>`;
+                    html += `<p><strong>Matches Lost:</strong> ${data.loss}</p>`;
+                    html += `<p><strong>No Result:</strong> ${data.noResult}</p>`;
+                    html += `<p><strong>Titles Won:</strong> ${data.title}</p>`;
+
+                    resultDiv.innerHTML = html;
+                })
+                .catch(err => {
+                    resultDiv.innerHTML = "Failed to load team stats.";
+                    console.error(err);
+                });
+        });
+    </script>
+
+</body>
+</html>
