@@ -59,9 +59,7 @@ IPL-WebApp-using-Flask/
 │
 ├── templates/ # HTML templates
 ├── static/ # CSS, JS, images
-└── README.md
-
-'''
+└── README.md'''
 ---
 
 ## 🖼️ Screenshots
