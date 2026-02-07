@@ -45,6 +45,7 @@ This project focuses on **data correctness, backend engineering, and real-world 
 
 ## 📁 Project Structure
 
+'''
 IPL-WebApp-using-Flask/
 │
 ├── app.py # Main Flask application
@@ -60,7 +61,7 @@ IPL-WebApp-using-Flask/
 ├── static/ # CSS, JS, images
 └── README.md
 
-
+'''
 ---
 
 ## 🖼️ Screenshots
