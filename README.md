@@ -45,7 +45,7 @@ This project focuses on **data correctness, backend engineering, and real-world 
 
 ## 📁 Project Structure
 
-'''
+```
 IPL-WebApp-using-Flask/
 │
 ├── app.py # Main Flask application
@@ -60,12 +60,12 @@ IPL-WebApp-using-Flask/
 ├── templates/ # HTML templates
 ├── static/ # CSS, JS, images
 └── README.md'''
----
+```
 
 ## 🖼️ Screenshots
 
 > Add screenshots of your project UI here
-
+```
 /static/images/
 ├── login.png
 ├── dashboard.png
@@ -73,7 +73,7 @@ IPL-WebApp-using-Flask/
 ├── batsman_stats.png
 ├── bowler_stats.png
 ├── team_vs_team.png
-
+```
 
 ### Login Page
 ![Login Page](static/images/login.png)
@@ -98,25 +98,31 @@ IPL-WebApp-using-Flask/
 ```bash
 git clone https://github.com/vishnugupta15/IPL-WebApp-using-Flask.git
 cd IPL-WebApp-using-Flask
+```
 2️⃣ Install dependencies
+```bash
 pip install flask pandas numpy
+```
 3️⃣ Run the Flask app
+```bash
 python app.py
+```
 4️⃣ Open in browser
+```bash
 http://127.0.0.1:5000/
-🔐 Authentication Flow
-Register using a new email
-
-Login using registered credentials
-
-All analytics pages are protected routes
-
-Unauthorized users are redirected to login
+```
+## 🔐 Authentication Flow
+- Register using a new email
+- Login using registered credentials
+- All analytics pages are protected routes
+- Unauthorized users are redirected to login
 
 Note: Passwords are stored in plain text as this is a learning prototype.
 Hashing (bcrypt) can be added as a future improvement.
 
-🧪 API Endpoints (Examples)
+## 🧪 API Endpoints (Examples)
+
+```bash
 /api/teams
 /api/team-stats?team=Mumbai Indians
 /api/batsmen
@@ -124,23 +130,20 @@ Hashing (bcrypt) can be added as a future improvement.
 /api/bowlers
 /api/bowler-stats?bowler=Jasprit Bumrah
 /api/teamvteam?team1=CSK&team2=MI
-🔮 Future Improvements
-Password hashing & database integration
+```
 
-Deployment (Render / AWS / Railway)
+## 🔮 Future Improvements
+- Password hashing & database integration
+- Deployment (Render / AWS / Railway)
+- Advanced filters (season-wise, venue-wise stats)
+- Caching for faster API responses
+- Visualizations (charts & graphs)
 
-Advanced filters (season-wise, venue-wise stats)
+## 📌 Status
+- Built and tested locally
+- Focused on learning ML/Data Science foundations through real projects
 
-Caching for faster API responses
-
-Visualizations (charts & graphs)
-
-📌 Status
-Built and tested locally
-
-Focused on learning ML/Data Science foundations through real projects
-
-⭐ If you like this project
+## ⭐ If you like this project
 Feel free to ⭐ the repo and explore the code.
 Feedback and suggestions are always welcome!
 
