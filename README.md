@@ -59,12 +59,11 @@ IPL-WebApp-using-Flask/
 │
 ├── templates/ # HTML templates
 ├── static/ # CSS, JS, images
-└── README.md'''
+└── README.md
 ```
 
 ## 🖼️ Screenshots
 
-> Add screenshots of your project UI here
 ```
 /static/images/
 ├── login.png
