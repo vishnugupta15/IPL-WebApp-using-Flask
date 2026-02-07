@@ -125,10 +125,10 @@ Hashing (bcrypt) can be added as a future improvement.
 /api/teams
 /api/team-stats?team=Mumbai Indians
 /api/batsmen
-/api/batsman-stats?batsman=Virat Kohli
+/api/batsman-stats?batsman=V Kohli
 /api/bowlers
-/api/bowler-stats?bowler=Jasprit Bumrah
-/api/teamvteam?team1=CSK&team2=MI
+/api/bowler-stats?bowler=JJ Bumrah
+/api/teamvteam?team1=Chennai Super Kings&team2=Mumbai Indians
 ```
 
 ## 🔮 Future Improvements
